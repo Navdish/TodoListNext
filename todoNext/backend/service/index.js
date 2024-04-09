@@ -1,3 +1,4 @@
 module.exports = {
-    todoService: require('./todo.service')
+    todoService: require('./todo.service'),
+    postService: require('./post.service')
 }

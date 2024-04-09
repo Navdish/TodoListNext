@@ -3,31 +3,33 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class todo extends Model {
+  class Post extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Post}) {
+    static associate({todo}) {
       // define association here
-      this.hasMany(Post, {foreignKey:"todoId"})
-    }
-    toJSON(){
-      return {...this.get(), id: undefined}
+      this.belongsTo(todo, {foreignKey:'todoId'})
     }
   }
-  todo.init({
-    content:{ 
+  Post.init({
+    body:{
       type: DataTypes.STRING,
       allowNull: false,
     },
     uuid:{
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-    }}, {
+    },
+    todoId: {
+      type: DataTypes.INTEGER,
+      allowNull:false
+    },
+  }, {
     sequelize,
-    modelName: 'todo',
+    modelName: 'Post',
   });
-  return todo;
+  return Post;
 };

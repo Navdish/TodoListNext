@@ -14,6 +14,7 @@ async function List() {
     try {
       const response = await fetch("http://localhost:3000/api/todo", { next: { tags: ['todolist'] } });
       const temp = await response.json();
+      console.log(temp.list);
       return temp.list;
     } catch (error) {
       console.log("error - ", error);
