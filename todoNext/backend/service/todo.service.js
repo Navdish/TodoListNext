@@ -8,8 +8,12 @@ const { todo } = require('../models')
 //     return response;
 // }
 
+
+//{include: ['post']}
 exports.fetchList = async()=> {
-    const response = await todo.findAll();
+    console.log("before");
+    const response = await todo.findAll({include: ['post']});
+    console.log("after");
     if(!response) throw new CustomError("Could not find any list item", 204);
     return response;
 }

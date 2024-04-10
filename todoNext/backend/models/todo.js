@@ -9,13 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Post}) {
+    static associate({ post}) {
       // define association here
-      this.hasMany(Post, {foreignKey:"todoId"})
+      this.hasMany(post, {foreignKey:'todoId', sourceKey:'id', as:'post'})
+
     }
-    toJSON(){
-      return {...this.get(), id: undefined}
-    }
+    // toJSON(){
+    //   return {...this.get(), id: undefined}
+    // }
   }
   todo.init({
     content:{ 
