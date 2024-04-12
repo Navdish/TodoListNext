@@ -3,7 +3,7 @@ import { Component } from "react";
 
 const withAuth = (Component: any) => {
   const Auth = (props:any) => {
-    const { isLoggedIn } = props;
+    const isLoggedIn = localStorage.getItem('role');
 
     if (!isLoggedIn) {
       return (
