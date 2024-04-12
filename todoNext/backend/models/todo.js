@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ post}) {
       // define association here
       this.hasMany(post, {foreignKey:'todoId', sourceKey:'id', as:'post'})
-
     }
     // toJSON(){
     //   return {...this.get(), id: undefined}
